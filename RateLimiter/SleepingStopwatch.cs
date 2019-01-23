@@ -26,7 +26,7 @@ namespace Guava.RateLimiter
             if (!Stopwatch.IsHighResolution)
                 return _stopwatch.ElapsedMilliseconds * 1000; //_stopwatch.ElapsedTicks / Stopwatch.Frequency;
 
-            return _stopwatch.ElapsedTicks * 1000000 / Stopwatch.Frequency;
+            return (long)(1000000 * (double)_stopwatch.ElapsedTicks / Stopwatch.Frequency);
         }
 
         public void SleepMicrosUninterruptibly(long micros)
